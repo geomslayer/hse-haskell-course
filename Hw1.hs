@@ -15,10 +15,12 @@ Solution:
 ((λ p. (λ q. ((q (p r)) s))) ((q (r)) s))
 ((λ p. (λ q. ((q (p r)) s))) ((q r) s))
 ((λ p. (λ q. ((q (p r)) s))) (q r s))
-(λ q. ((q ((q r s) r)) s))
-λ q. ((q (q r s r)) s)
-λ q. (q (q r s r) s)
-λ q. q (q r s r) s
+((λ p. (λ t. ((t (p r)) s))) (q r s))
+(λ t. ((t ((q r s) r)) s))
+(λ t. ((t (q r s r)) s))
+(λ t. (t (q r s r) s))
+λ t. (t (q r s r) s)
+λ t. t (q r s r) s
 
 1.2. Аналогично:
 ((λ a. λ b. (λ x. x) b a (a b x) ((λ a. (λ b. a)) x)) (λ b. b)) [x := b]
