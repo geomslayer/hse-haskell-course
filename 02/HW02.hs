@@ -63,11 +63,12 @@ instance Semigroup (ValueOpEx v) where
   Op (Upd _)      <> Op (Rem)        = Op (Rem)
 -- Остальные случаи невалидны
   Op (Upd _)      <> _               = Err
--- Удаление и создание аналогично созданию
+-- Удаление и создание аналогично обновлению
   Op (Rem)        <> Op (New v)      = Op (Upd v)
+-- После удаления может следовать NotExisted
   Op (Rem)        <> Op (NotExisted) = Op (Rem)
 -- Остальные случаи невалидны
-Op (Rem)        <> _               = Err
+  Op (Rem)        <> _               = Err
 -- NotExisted может следовать создание
   Op (NotExisted) <> Op (New v)      = Op (New v)
 -- или NotExisted
